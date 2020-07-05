@@ -1,0 +1,24 @@
+name: CI
+
+on: 
+  push:
+    branches: [ master ]
+  
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Deploying project to Digital Ocean/production
+        uses: TheBrainOne/scp-deploy@dev
+        with:
+          local_path: "./README.md"
+          server_path: ${{ secrets.SERVER_PATH }}
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          ssh_key: ${{ secrets.SSH_KEY }}

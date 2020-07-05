@@ -2,7 +2,8 @@ name: CI
 
 on: 
   push:
-    branches: [ master ]
+    branches: 
+    - master
   
 jobs:
 
@@ -14,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Deploying project to Digital Ocean/production
-        uses: TheBrainOne/scp-deploy@dev
+        uses: TheBrainOne/scp-deploy@master
         with:
           local_path: "./README.md"
           server_path: ${{ secrets.SERVER_PATH }}

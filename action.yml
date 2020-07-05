@@ -1,12 +1,35 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
+name: 'scp-deploy'
+
+description: 'A simple GitHub Action that deploy files to a remote server via SCP'
+
 author: 'GitHub'
+
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+
+  local_path:
+    description: 'Path to the file or folder you want to deploy'
+    required: true
+  
+  server_path:
+    description: 'Path on the server where you want to deploy'
+    required: true
+  
+  host:
+    description: 'Enter host name or IP address'
+    required: true
+    
+  port:
+    description: 'Enter SSH port on the server or leave empty if the port is 22 by default'
+    required: false
+    default: 22
+    
+  username:
+    description: 'Enter username'
+    required: true
+    
+  ssh_key:
+    description: 'Enter private ssh key'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.myInput }}

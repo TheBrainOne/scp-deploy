@@ -30,6 +30,10 @@ inputs:
   ssh_key:
     description: 'Enter private ssh key'
 
+  init_npm:
+    description: 'Use if you need to install npm packages on the server (true/false)'
+    default: false
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
